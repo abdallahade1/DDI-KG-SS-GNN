@@ -1,5 +1,12 @@
 # Drug-Drug Interaction Prediction with KG-SS-GNN
 
+<p>
+  <strong>Live Streamlit Demo:</strong>
+  <a href="https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN">
+    <mark><u>https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN</u></mark>
+  </a>
+</p>
+
 This repository contains the modular code version of `../ddi-phase2_v2.ipynb`.
 It uses the local DrugBank DDI dataset in `../data/drugbank_ddi.csv` and trains
 the final KG-SS-GNN model implemented in the updated notebook.
@@ -84,14 +91,6 @@ repo/
 The `docs/` folder contains the project presentation and the final technical
 report PDF. These files are included so the repository has both the runnable
 code and the submitted project documentation in one place.
-
-## Live Demo
-
-The Streamlit demo is deployed on Hugging Face Spaces:
-
-```text
-https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN
-```
 
 ## Reproducibility Instructions
 
