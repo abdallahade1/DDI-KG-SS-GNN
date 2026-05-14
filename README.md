@@ -21,6 +21,29 @@ Drug1_ID, Drug1, Drug2_ID, Drug2, Y
 The downloaded file in this project has 191,808 interaction rows, 86 interaction
 classes, and 1,706 unique drugs.
 
+You can either place an already downloaded copy at `../data/drugbank_ddi.csv`
+or import/download the dataset directly from Therapeutics Data Commons (TDC).
+The repo code expects the CSV file after download, so run this once before
+training if the file is missing:
+
+```powershell
+pip install PyTDC
+python -c "from tdc.multi_pred import DDI; import os; os.makedirs('../data', exist_ok=True); data = DDI(name='DrugBank', path='../data'); df = data.get_data(); df.to_csv('../data/drugbank_ddi.csv', index=False); print(df.shape)"
+```
+
+Equivalent Python snippet:
+
+```python
+from tdc.multi_pred import DDI
+import os
+
+os.makedirs("../data", exist_ok=True)
+data = DDI(name="DrugBank", path="../data")
+df = data.get_data()
+df.to_csv("../data/drugbank_ddi.csv", index=False)
+print(df.shape)
+```
+
 ## Model
 
 The final model is `KGSSGNN`:
@@ -62,6 +85,14 @@ The `docs/` folder contains the project presentation and the final technical
 report PDF. These files are included so the repository has both the runnable
 code and the submitted project documentation in one place.
 
+## Live Demo
+
+The Streamlit demo is deployed on Hugging Face Spaces:
+
+```text
+https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN
+```
+
 ## Reproducibility Instructions
 
 Create an environment and install dependencies. Use Python 3.12;
@@ -78,11 +109,11 @@ python -m src.ddi_project.train --data-path ../data/drugbank_ddi.csv --epochs 10
 The notebook checkpoints used by the Streamlit demo are expected at:
 
 ```text
-../checkpoint/kgssgnn_best_pickle_new.pkl
-../checkpoint/kgssgnn_best_pickle_old.pkl
+../checkpoint/kgssgnn_best_pickle_cold_split.pkl
+../checkpoint/kgssgnn_best_pickle_semi_cold_split.pkl
 ```
 
-If you train from the repo, the new checkpoint is saved to:
+If you train from the repo, the generated checkpoint is saved to:
 
 ```text
 artifacts/kgssgnn_best.pt
@@ -91,7 +122,7 @@ artifacts/kgssgnn_best.pt
 Evaluate the checkpoint:
 
 ```powershell
-python -m src.ddi_project.evaluate --checkpoint ../checkpoint/kgssgnn_best_pickle_new.pkl --data-path ../data/drugbank_ddi.csv
+python -m src.ddi_project.evaluate --checkpoint ../checkpoint/kgssgnn_best_pickle_cold_split.pkl --data-path ../data/drugbank_ddi.csv
 ```
 
 Run the Streamlit demo:
@@ -100,5 +131,6 @@ Run the Streamlit demo:
 streamlit run app.py
 ```
 
-The demo lets you choose between the new checkpoint, old checkpoint, or a custom
-checkpoint path. It does not use a synthetic fallback model.
+The demo lets you choose between the `cold_split` checkpoint,
+`semi_cold_split` checkpoint, or a custom checkpoint path. It does not use a
+synthetic fallback model.

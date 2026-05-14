@@ -17,7 +17,7 @@ class ProjectConfig:
     weight_decay: float = 1e-4
     artifacts_dir: Path = Path("artifacts")
     data_path: Path = Path("../data/drugbank_ddi.csv")
-    checkpoint_path: Path = Path("../checkpoint/kgssgnn_best_pickle_new.pkl")
+    checkpoint_path: Path = Path("../checkpoint/kgssgnn_best_pickle_cold_split.pkl")
 
 
 DEFAULT_CONFIG = ProjectConfig()
