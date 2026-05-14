@@ -1,11 +1,7 @@
 # Drug-Drug Interaction Prediction with KG-SS-GNN
 
-<p>
-  <strong>Live Streamlit Demo:</strong>
-  <a href="https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN">
-    <mark><u>https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN</u></mark>
-  </a>
-</p>
+**[Live Streamlit Demo](https://huggingface.co/spaces/AbdulrahmanMahmoud007/DDI-KG-SS-GNN) | [Notebook on Kaggle](https://www.kaggle.com/code/abdallahadelabdallah/ddi-prediction)**
+    
 
 This repository contains the modular code version of `../ddi-phase2_v2.ipynb`.
 It uses the local DrugBank DDI dataset in `../data/drugbank_ddi.csv` and trains
